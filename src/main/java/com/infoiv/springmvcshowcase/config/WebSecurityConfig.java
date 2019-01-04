@@ -17,6 +17,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
+	
+	@Autowired
+	private CustomSuccessHandler successHandler;
 
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -25,16 +28,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
 		http.authorizeRequests()
 		.antMatchers("/webjars/**", "/registration", "/h2-console/**")
 		.permitAll()
-		.anyRequest()
-		.authenticated()
-		.and()
-		.formLogin()
-		.loginPage("/login")
-		.permitAll()
-		.and()
+        .antMatchers("/", "/home").access("hasRole('USER')")
+        .antMatchers("/admin/**").access("hasRole('ADMIN')")
+        .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
+        .and().formLogin().loginPage("/login").successHandler(successHandler)
+        .usernameParameter("username").passwordParameter("password")
+        .and().csrf()
+        .and().exceptionHandling().accessDeniedPage("/Access_Denied")
+        .and()
 		.logout().permitAll();
 		
 		http.csrf().disable();

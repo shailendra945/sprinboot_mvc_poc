@@ -9,7 +9,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @SpringBootApplication
-
 public class SpringmvcshowcaseApplication {
 
 	public static void main(String[] args) {
