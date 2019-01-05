@@ -17,7 +17,7 @@
     <title>Log in with your account</title>
 
     <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="webjars/bootstrap/3.3.6/css/common.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,11 +28,17 @@
 
 <body>
 
-<div class="container">
-
+<div>
+<div class="row">
+  <div class="column bgimg" style="background-color:greenyellow;">
+    
+  </div>
+  <div class="column">
+  <div class="form-heading message"><marquee>Yummy order awaits you . hurry up !!!</marquee></div>
+   <div class="login well">
     <form method="POST" action="${contextPath}/login" class="form-signin">
-        <fieldset>
-        <legend><h2 class="form-heading">Log in</h2>
+       
+        <h2 class="form-heading">Log in</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span><br/>
@@ -42,13 +48,14 @@
             <span>${error}</span><br>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button><br/>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+            <button class="btn btn-lg btn-success btn-block" type="submit">Log In</button><br/>
+            <h4 class="text-center "><a class="form-heading" href="${contextPath}/registration">Sign Up</a></h4>
         </div>
-	</legend>
-	</fieldset>
+	
     </form>
-
+    </div>
+  </div>
+</div>
 </div>
 <!-- /container -->
  <script src="webjars/jquery/1.9.1/jquery.min.js"></script>

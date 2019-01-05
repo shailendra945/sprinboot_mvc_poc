@@ -17,7 +17,7 @@
     <title>Create an account</title>
 
    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="webjars/bootstrap/3.3.6/css/common.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,10 +28,17 @@
 
 <body>
 
-<div class="container">
+<div>
+ <div class="row">
+  <div class="column bgimg" style="background-color:greenyellow;">
+    
+  </div>
+  <div class="column">
+  <div class="form-heading message"><marquee>Yummy order awaits you . hurry up !!!</marquee></div>
+   <div class="login well">
 
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
+        <h2 class="form-heading">Create your account</h2>
         <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="username" class="form-control" placeholder="Username"
@@ -55,9 +62,11 @@
             </div>
         </spring:bind>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        <button class="btn btn-lg btn-success btn-block" type="submit">Submit</button>
     </form:form>
-
+</div>
+</div>
+</div>
 </div>
 <!-- /container -->
 <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
